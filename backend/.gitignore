@@ -1,0 +1,22 @@
+# Ignoring temp folders and database files
+db.sqlite3
+
+# Ignore virtual environments
+virtual_env
+models
+
+# Ignore log files and compiled Python files
+*.log
+*.pot
+*.pyc
+__pycache__
+
+# Ignore media and credential files
+media
+user_api/creds.json
+
+*.env
+
+# Ignore VSCode specific files
+.vscode/
+*.code-workspace
