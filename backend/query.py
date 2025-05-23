@@ -3,6 +3,7 @@ import google.generativeai as genai
 from user_api.models import Chat, ChatPage
 from prompts import get_prompt
 from dotenv import load_dotenv
+import time
 import torch
 import json
 import re
@@ -122,12 +123,14 @@ gemini_api_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=gemini_api_key)
 
 def give_explanation(question, correct_ans, user_ans):
+    time.sleep(2)
     query = f"The user was given a question {question} to solve in a test. The correct answer was \"{correct_ans}\" and the user answered \"{user_ans}\". Explain why the user was "
     query += "correct" if correct_ans == user_ans else "incorrect"
     query += ". Do not provide any fancy formatting. Provide your answer in one paragraph in plaintext."
     return run_gemini_query("chat", query=query)
 
 def run_gemini_query(query):
+    time.sleep(3)
     try:
         model = genai.GenerativeModel(gemini_model_name)
         answer = model.generate_content(query)
